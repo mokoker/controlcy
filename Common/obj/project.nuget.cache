@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "g6qIvluef/JWx4Bx6NB7IqyLXfTrZ6vhuX3ExkrTEyO3klux8WFkImpag0E0q5rc0y4yYQEaEVHAw/ant/6ZJA==",
+  "success": true,
+  "projectFilePath": "D:\\Controlcy\\Common\\Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\blackneuron\\.nuget\\packages\\ipnetwork2\\2.6.467\\ipnetwork2.2.6.467.nupkg.sha512"
+  ],
+  "logs": []
+}

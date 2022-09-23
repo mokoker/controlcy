@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Common/1.0.0": {
+        "dependencies": {
+          "IPNetwork2": "2.6.467"
+        },
+        "runtime": {
+          "Common.dll": {}
+        }
+      },
+      "IPNetwork2/2.6.467": {
+        "runtime": {
+          "lib/net6.0/System.Net.IPNetwork.dll": {
+            "assemblyVersion": "2.6.467.0",
+            "fileVersion": "2.6.467.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "IPNetwork2/2.6.467": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-r5rDdWOGjXp4sb5t2n6le06jM5ill5RgriNHC4Nv4vp4B7Q3rxNYGXs6HC4SVptDbKaBBzuEncuoKoX5KcPMFg==",
+      "path": "ipnetwork2/2.6.467",
+      "hashPath": "ipnetwork2.2.6.467.nupkg.sha512"
+    }
+  }
+}

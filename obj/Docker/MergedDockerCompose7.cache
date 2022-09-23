@@ -1,0 +1,123 @@
+services:
+  agentservice:
+    build:
+      context: D:\Controlcy
+      dockerfile: AgentService/Dockerfile2
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: AgentService
+    container_name: AgentService
+    entrypoint: tail -f /dev/null
+    environment:
+      NUGET_FALLBACK_PACKAGES: ''
+    image: agentservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/AgentService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    tty: true
+    volumes:
+    - D:\Controlcy\AgentService:/app:rw
+    - C:\Users\blackneuron\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\blackneuron\.nuget\packages:/root/.nuget/packages:ro
+  controlcyserver:
+    build:
+      context: D:\Controlcy
+      dockerfile: ControlcyServer/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: ControlcyServer
+      target: base
+    container_name: ControlcyServer
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: controlcyserver:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/ControlcyServer.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    - target: 443
+    tty: true
+    volumes:
+    - D:\Controlcy\ControlcyServer:/app:rw
+    - C:\Users\blackneuron\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\blackneuron\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\blackneuron\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Users\blackneuron\.nuget\packages:/root/.nuget/packages:ro
+    - D:\Controlcy:/src:rw
+  dbwriterservice:
+    build:
+      context: D:\Controlcy
+      dockerfile: DbWriterService/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: DbWriterService
+      target: base
+    container_name: DbWriterService
+    entrypoint: tail -f /dev/null
+    environment:
+      NUGET_FALLBACK_PACKAGES: ''
+    image: dbwriterservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/net6.0/DbWriterService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    tty: true
+    volumes:
+    - D:\Controlcy\DbWriterService:/app:rw
+    - C:\Users\blackneuron\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\blackneuron\.nuget\packages:/root/.nuget/packages:ro
+  pgadmin:
+    container_name: pgadmin_cntr
+    environment:
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    image: dpage/pgadmin4
+    ports:
+    - published: 5050
+      target: 80
+    restart: unless-stopped
+    volumes:
+    - pgadmin:/var/lib/pgadmin:rw
+  postgres:
+    container_name: postgres_cntr
+    environment:
+      PGDATA: /data/postgres
+      POSTGRES_PASSWORD: '31415'
+      POSTGRES_USER: postgres
+    image: postgres
+    ports:
+    - published: 5432
+      target: 5432
+    restart: unless-stopped
+    volumes:
+    - postgres:/data/postgres:rw
+  rabbitmq:
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_PASS: pass
+      RABBITMQ_DEFAULT_USER: user
+    image: rabbitmq:3-management
+    ports:
+    - published: 5672
+      target: 5672
+    - published: 15672
+      target: 15672
+version: '3.4'
+volumes:
+  pgadmin: {}
+  postgres: {}

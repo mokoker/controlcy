@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "e0fdf514-78d6-475c-afc3-362bb10b6f5e": {
+      "ProjectGuid": "e0fdf514-78d6-475c-afc3-362bb10b6f5e",
+      "DisplayName": "ControlcyServer",
+      "ColorIndex": 0
+    },
+    "cbc8a7c4-d292-43bc-9eda-5010403f87be": {
+      "ProjectGuid": "cbc8a7c4-d292-43bc-9eda-5010403f87be",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "82d70f98-3c6e-432d-bf65-5949b35c881a": {
+      "ProjectGuid": "82d70f98-3c6e-432d-bf65-5949b35c881a",
+      "DisplayName": "DbWriterService",
+      "ColorIndex": 2
+    },
+    "e885d946-3898-4662-85ac-a83e8358fead": {
+      "ProjectGuid": "e885d946-3898-4662-85ac-a83e8358fead",
+      "DisplayName": "Common",
+      "ColorIndex": 3
+    },
+    "d404bf63-4197-49a0-8dcb-8d86cdb89024": {
+      "ProjectGuid": "d404bf63-4197-49a0-8dcb-8d86cdb89024",
+      "DisplayName": "AgentService",
+      "ColorIndex": 4
+    },
+    "72a36c34-89cd-41f8-8839-94b0ae5f1e3c": {
+      "ProjectGuid": "72a36c34-89cd-41f8-8839-94b0ae5f1e3c",
+      "DisplayName": "AgentService",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

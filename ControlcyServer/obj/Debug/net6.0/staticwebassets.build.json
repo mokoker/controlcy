@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "W7X1jEidaysfa91bNRVm5GrVjsLD87NHOcc1w5X7A2I=",
+  "Source": "ControlcyServer",
+  "BasePath": "_content/ControlcyServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

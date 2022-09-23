@@ -1,0 +1,119 @@
+name: dockercompose16790737792892345442
+services:
+  agentservice:
+    build:
+      context: D:\Controlcy
+      dockerfile: AgentService/Dockerfile
+    image: agentservice
+    networks:
+      default: null
+  controlcyserver:
+    build:
+      context: D:\Controlcy
+      dockerfile: ControlcyServer/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    image: controlcyserver
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    - mode: ingress
+      target: 6668
+      published: "80"
+      protocol: tcp
+    - mode: ingress
+      target: 6669
+      published: "443"
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\blackneuron\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\blackneuron\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+  dbwriterservice:
+    build:
+      context: D:\Controlcy
+      dockerfile: DbWriterService/Dockerfile
+    image: dbwriterservice
+    networks:
+      default: null
+  pgadmin:
+    container_name: pgadmin_cntr
+    environment:
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    image: dpage/pgadmin4
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "5050"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: volume
+      source: pgadmin
+      target: /var/lib/pgadmin
+      volume: {}
+  postgres:
+    container_name: postgres_cntr
+    environment:
+      PGDATA: /data/postgres
+      POSTGRES_PASSWORD: "31415"
+      POSTGRES_USER: postgres
+    image: postgres
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5432
+      published: "5432"
+      protocol: tcp
+    restart: unless-stopped
+    volumes:
+    - type: volume
+      source: postgres
+      target: /data/postgres
+      volume: {}
+  rabbitmq:
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_PASS: pass
+      RABBITMQ_DEFAULT_USER: user
+    image: rabbitmq:3-management
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 5672
+      published: "5672"
+      protocol: tcp
+    - mode: ingress
+      target: 15672
+      published: "15672"
+      protocol: tcp
+networks:
+  default:
+    name: dockercompose16790737792892345442_default
+volumes:
+  pgadmin:
+    name: dockercompose16790737792892345442_pgadmin
+  postgres:
+    name: dockercompose16790737792892345442_postgres

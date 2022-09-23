@@ -1,0 +1,61 @@
+version: '3.4'
+
+services:
+  controlcyserver:
+    image: ${DOCKER_REGISTRY-}controlcyserver
+    build:
+      context: .
+      dockerfile: ControlcyServer/Dockerfile
+    ports:
+        - 80:6668
+        - 443:6669
+
+  postgres:
+    container_name: postgres_cntr
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-31415}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+ 
+  pgadmin:
+    container_name: pgadmin_cntr
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+        - 5672:5672
+        - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=pass
+  dbwriterservice:
+    image: ${DOCKER_REGISTRY-}dbwriterservice
+    build:
+      context: .
+      dockerfile: DbWriterService/Dockerfile
+  agentservice:
+    image: ${DOCKER_REGISTRY-}agentservice
+
+    build:
+      context: .
+      dockerfile: AgentService/Dockerfile
+volumes:
+    postgres:
+    pgadmin:

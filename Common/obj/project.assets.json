@@ -1,0 +1,114 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "IPNetwork2/2.6.467": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/System.Net.IPNetwork.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/System.Net.IPNetwork.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IPNetwork2/2.6.467": {
+      "sha512": "r5rDdWOGjXp4sb5t2n6le06jM5ill5RgriNHC4Nv4vp4B7Q3rxNYGXs6HC4SVptDbKaBBzuEncuoKoX5KcPMFg==",
+      "type": "package",
+      "path": "ipnetwork2/2.6.467",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "ipnetwork2.2.6.467.nupkg.sha512",
+        "ipnetwork2.nuspec",
+        "lib/net462/System.Net.IPNetwork.dll",
+        "lib/net462/System.Net.IPNetwork.xml",
+        "lib/net47/System.Net.IPNetwork.dll",
+        "lib/net47/System.Net.IPNetwork.xml",
+        "lib/net48/System.Net.IPNetwork.dll",
+        "lib/net48/System.Net.IPNetwork.xml",
+        "lib/net5.0/System.Net.IPNetwork.dll",
+        "lib/net5.0/System.Net.IPNetwork.xml",
+        "lib/net6.0/System.Net.IPNetwork.dll",
+        "lib/net6.0/System.Net.IPNetwork.xml",
+        "lib/netcoreapp3.1/System.Net.IPNetwork.dll",
+        "lib/netcoreapp3.1/System.Net.IPNetwork.xml",
+        "lib/netstandard2.0/System.Net.IPNetwork.dll",
+        "lib/netstandard2.0/System.Net.IPNetwork.xml",
+        "lib/netstandard2.1/System.Net.IPNetwork.dll",
+        "lib/netstandard2.1/System.Net.IPNetwork.xml"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "IPNetwork2 >= 2.6.467"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\blackneuron\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\Controlcy\\Common\\Common.csproj",
+      "projectName": "Common",
+      "projectPath": "D:\\Controlcy\\Common\\Common.csproj",
+      "packagesPath": "C:\\Users\\blackneuron\\.nuget\\packages\\",
+      "outputPath": "D:\\Controlcy\\Common\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\blackneuron\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "dependencies": {
+          "IPNetwork2": {
+            "target": "Package",
+            "version": "[2.6.467, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
