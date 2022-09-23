@@ -81,3 +81,4 @@ D:\Controlcy\bin\Debug\AgentService.exe
 D:\Controlcy\bin\Debug\AgentService.dll
 D:\Controlcy\bin\Debug\AgentService.pdb
 D:\Controlcy\bin\Debug\RestSharp.dll
+D:\Controlcy\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll

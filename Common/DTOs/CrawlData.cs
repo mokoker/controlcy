@@ -13,6 +13,6 @@ namespace Common.DTOs
             Ports = new List<PortData>();
         }
         public string IPAddress { get; set; }
-        public List<PortData> Ports { get; private set; }
+        public List<PortData> Ports { get;  set; }
     }
 }

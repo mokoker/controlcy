@@ -16,7 +16,7 @@ namespace ControlcyServer.Database
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             // connect to sql server with connection string from app settings
-            options.UseNpgsql(Configuration.GetConnectionString("ControlcyDatabase"));
+            options.UseNpgsql(Configuration.GetConnectionString("SegmentDatabase"));
         }
 
         public DbSet<Segment> Segments { get; set; }

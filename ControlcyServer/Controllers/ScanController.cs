@@ -1,7 +1,9 @@
-﻿using Common.DTOs;
+﻿using Common.Database.Database;
+using Common.DTOs;
 using Common.DTOs.Enums;
-
+using ControlcyServer.Database;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
@@ -13,45 +15,37 @@ namespace ControlcyServer.Controllers
     [ApiController]
     public class ScanController : ControllerBase
     {
+        private ControlcyDbContext _context;
+        public ScanController(ControlcyDbContext context)
+        {
+            _context = context;
 
-        public ScanController()
-        {
-     
-        }
-        // GET: api/<ScanController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
         }
 
         // GET api/<ScanController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        [HttpGet("/one/{ip}")]
+        public CrawlData GetCrawlData(string ip)
         {
-            return "value";
+            var scan = _context.Scans.Include(z=>z.Ports).OrderByDescending(x=>x.Id).FirstOrDefault(y=>y.AddressIp == ip);
+            return scan.GetCrawlData();
         }
 
-        // POST api/<ScanController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("/all/{ip}")]
+        public List<CrawlData> GetAllCrawlData(string ip)
         {
-
-            
-
-            Console.WriteLine("Press any key to exit...");
-
+            var scan = _context.Scans.Include(z => z.Ports).OrderByDescending(x => x.Id).Where(y => y.AddressIp == ip);
+            var target = scan.Select(x => x.GetCrawlData()).ToList();
+            return target;
         }
 
-        // PUT api/<ScanController>/5
         [HttpPost]
         [Route("/queue")]
         public void PostQueue()
         {
 
-            var factory = new ConnectionFactory() { HostName = "rabbitmq" ,UserName="user",Password ="pass" };
+            var factory = new ConnectionFactory() { HostName = "rabbitmq", UserName = "user", Password = "pass" };
             using (var connection = factory.CreateConnection())
-                
+
             using (var channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: "crawled",
@@ -99,14 +93,6 @@ namespace ControlcyServer.Controllers
                     channel.BasicPublish("", "crawled", null, messageBodyBytes);
                 }
             }
-        }
-
-
-
-        // DELETE api/<ScanController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

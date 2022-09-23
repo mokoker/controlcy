@@ -1,4 +1,5 @@
 
+using Common.Database.Database;
 using ControlcyServer.Database;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,7 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ManagementDbContext>();
-
+builder.Services.AddDbContext<ControlcyDbContext>();
 builder.WebHost.ConfigureKestrel((context, serverOptions) =>
 {
     var kestrelSection = context.Configuration.GetSection("Kestrel");
