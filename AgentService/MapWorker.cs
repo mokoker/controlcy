@@ -10,6 +10,7 @@ using Common.Helper;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RestSharp;
+using RestSharp.Authenticators;
 
 namespace AgentService
 {
@@ -36,6 +37,11 @@ namespace AgentService
                 if (_channel == null || _channel.IsClosed)
                 {
                    _channel = _connection.CreateModel();
+                   _channel.QueueDeclare(queue: "crawled",
+                             durable: true,
+                             exclusive: false,
+                             autoDelete: false,
+                             arguments: null);
                 }
                 return _channel;
             }
@@ -45,6 +51,7 @@ namespace AgentService
         {
             var url = "http://controlcyserver/segment";
             var client = new RestClient(url);
+            client.Authenticator = new HttpBasicAuthenticator("xTremeMustafa", "Master1312");
 
             var request = new RestRequest(url, Method.Get);
             RestResponse response = await client.ExecuteAsync(request);

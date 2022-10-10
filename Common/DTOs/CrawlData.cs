@@ -14,5 +14,7 @@ namespace Common.DTOs
         }
         public string IPAddress { get; set; }
         public List<PortData> Ports { get;  set; }
+        public DateTime ScanDate {  get; set; }
+
     }
 }

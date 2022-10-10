@@ -26,6 +26,7 @@ namespace DbWriterService.Models
             {
                 x.Ports.Add(port.GetPortData());
             }
+            x.ScanDate = ScanDate;
             return x;
         }
     }

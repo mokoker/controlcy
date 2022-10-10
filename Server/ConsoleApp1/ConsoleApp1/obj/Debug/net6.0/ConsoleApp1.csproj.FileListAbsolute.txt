@@ -13,3 +13,4 @@ D:\Controlcy\Server\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.dll
 D:\Controlcy\Server\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ref\ConsoleApp1.dll
 D:\Controlcy\Server\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.pdb
 D:\Controlcy\Server\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.genruntimeconfig.cache
+D:\Controlcy\Server\ConsoleApp1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.ResolveComReference.cache

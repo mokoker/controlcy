@@ -13,7 +13,7 @@ namespace DbWriterService
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            Task[] taskArray = new Task[5];
+            Task[] taskArray = new Task[2];
             try
             {
                 for (int i = 0; i < taskArray.Length; i++)

@@ -70,3 +70,5 @@ D:\Controlcy\ControlcyServer\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\Controlcy\ControlcyServer\bin\Debug\net6.0\Common.dll
 D:\Controlcy\ControlcyServer\bin\Debug\net6.0\Common.pdb
 D:\Controlcy\ControlcyServer\bin\Debug\net6.0\System.Net.IPNetwork.dll
+D:\Controlcy\ControlcyServer\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\Controlcy\ControlcyServer\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll

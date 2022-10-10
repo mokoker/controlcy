@@ -1,6 +1,7 @@
 ﻿using Common.Helper;
 using ControlcyServer.Database;
 using ControlcyServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,8 @@ namespace ControlcyServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
+
     public class SegmentController : ControllerBase
     {
         private ManagementDbContext _context;
@@ -18,6 +21,7 @@ namespace ControlcyServer.Controllers
         }
         [HttpPost]
         [Route("/Segment")]
+
         public void PostSegment(string cidr)
         {
             var divided = CIDRDivider.Divide(cidr);
